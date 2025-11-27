@@ -12,7 +12,7 @@ from gui.chat_widget import ChatWidget
 from logic.file_scanner import FileScanner
 from translator.translator import Translator
 
-CONFIG_FILE = "config.json"
+CONFIG_FILE = ".config/config.json"
 
 class TranslationWorker(QThread):
     """Worker thread for async translation"""
@@ -212,6 +212,9 @@ class MainWindow(QMainWindow):
         return ""
 
     def save_config(self, path):
+        config_dir = os.path.dirname(CONFIG_FILE)
+        if config_dir and not os.path.exists(config_dir):
+            os.makedirs(config_dir)
         with open(CONFIG_FILE, "w") as f:
             json.dump({"root_dir": path}, f)
 
