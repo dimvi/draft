@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg-light-primary dark:bg-bg-dark-primary text-gray-900 dark:text-gray-100 transition-colors font-sans;
+  }
+
+  /* Scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) rgb(241 245 249); /* Light mode: slate-300 thumb, slate-100 track */
+  }
+
+  .dark * {
+    scrollbar-color: rgb(71 85 105) rgb(30 41 59); /* Dark mode: slate-600 thumb, slate-800 track */
+  }
+
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgb(241 245 249); /* slate-100 */
+    border-radius: 4px;
+  }
+
+  .dark *::-webkit-scrollbar-track {
+    background: rgb(30 41 59); /* slate-800 */
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: rgb(203 213 225); /* slate-300 */
+    border-radius: 4px;
+  }
+
+  .dark *::-webkit-scrollbar-thumb {
+    background: rgb(71 85 105); /* slate-600 */
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgb(148 163 184); /* slate-400 */
+  }
+
+  .dark *::-webkit-scrollbar-thumb:hover {
+    background: rgb(100 116 139); /* slate-500 */
+  }
+}
+
+@layer components {
+  .message-bubble-user {
+    @apply bg-imessage-blue text-white rounded-bubble px-4 py-2 max-w-[70%] break-words shadow-sm;
+  }
+
+  .message-bubble-system {
+    @apply bg-bubble-light dark:bg-bubble-dark text-gray-900 dark:text-gray-100 rounded-bubble px-4 py-2 max-w-[70%] break-words shadow-sm;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+}
